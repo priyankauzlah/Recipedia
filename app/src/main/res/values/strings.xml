@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Recipedia</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="Recipes">Recipes</string>
+    <string name="favorites">Favorites</string>
+    <string name="jokes">Jokes</string>
+    <string name="recipe_name">Recipe Name</string>
+</resources>
