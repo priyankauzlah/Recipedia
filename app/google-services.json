@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "881301563205",
+    "project_id": "recipedia-uzlah",
+    "storage_bucket": "recipedia-uzlah.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:881301563205:android:560e5ad200a5532c0d002c",
+        "android_client_info": {
+          "package_name": "com.uzlahpri.recipedia"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "881301563205-v3m6uqcaq0fi6g5f1d6t6bsglva8vr4c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.uzlahpri.recipedia",
+            "certificate_hash": "d66d6a93f666811f17aa77685228c0ef8556ce83"
+          }
+        },
+        {
+          "client_id": "881301563205-u7h9b5p8il39h5a41o9bdanops8ojrvr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBFPwrWvg-6I3BKkKefYlHKZHue37HmGCU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "881301563205-u7h9b5p8il39h5a41o9bdanops8ojrvr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

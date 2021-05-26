@@ -22,4 +22,10 @@
         android:name="com.uzlahpri.recipedia.ui.jokes.JokesFragment"
         android:label="Jokes"
         tools:layout="@layout/fragment_jokes" />
+
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.uzlahpri.recipedia.ui.ProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile" />
 </navigation>

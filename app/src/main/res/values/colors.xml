@@ -12,4 +12,6 @@
     <color name="green_primary">#8BD2A3</color>
     <color name="green_secondary">#4CAF50</color>
     <color name="balck_grey">#333333</color>
+    <color name="red">#EE2020</color>
+    <color name="green_transparant">#338BD2A3</color>
 </resources>

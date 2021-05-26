@@ -16,4 +16,9 @@
         android:icon="@drawable/ic_jokes"
         android:title="@string/jokes" />
 
+    <item
+        android:id="@+id/navigation_profile"
+        android:icon="@drawable/ic_account"
+        android:title="@string/profile" />
+
 </menu>

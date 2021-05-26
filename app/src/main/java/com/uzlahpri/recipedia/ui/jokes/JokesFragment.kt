@@ -15,12 +15,12 @@ class JokesFragment : Fragment() {
     private lateinit var jokesViewModel: JokesViewModel
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         jokesViewModel =
-                ViewModelProvider(this).get(JokesViewModel::class.java)
+            ViewModelProvider(this).get(JokesViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_jokes, container, false)
         val textView: TextView = root.findViewById(R.id.text_notifications)
         jokesViewModel.text.observe(viewLifecycleOwner, Observer {
