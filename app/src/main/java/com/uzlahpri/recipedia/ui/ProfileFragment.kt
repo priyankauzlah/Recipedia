@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.uzlahpri.recipedia.R
 import com.uzlahpri.recipedia.authentication.LoginActivity
 import com.uzlahpri.recipedia.databinding.FragmentProfileBinding
 
@@ -38,7 +39,7 @@ class ProfileFragment : Fragment(), View.OnClickListener {
 
     override fun onClick(p0: View) {
         when(p0.id) {
-//            R.id.btn_logout -> logOut()
+            R.id.btn_logout -> logOut()
         }
     }
 

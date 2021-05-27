@@ -13,5 +13,22 @@ class Constants {
         const val QUERY_ADD_RECIPE_INFORMATION = "addRecipeInformation"
         const val QUERY_FILL_INGREDIENTS = "fillingIngredients"
 
+        // room database
+        const val DATABASE_NAME = "recipes_database"
+        const val RECIPES_TABLE = "recipes_table"
+        const val FAVORITE_RECIPES_TABLE = "favorite_recipes_table"
+        const val FOOD_JOKE_TABLE = "food_joke_table"
+
+        // Bottom Sheet and Preferences
+        const val DEFAULT_RECIPES_NUMBER = "50"
+        const val DEFAULT_MEAL_TYPE = "main course"
+        const val DEFAULT_DIET_TYPE = "gluten free"
+        const val PREFERENCES_MEAL_TYPE = "mealType"
+        const val PREFERENCES_MEAL_TYPE_ID = "mealTypeId"
+        const val PREFERENCES_DIET_TYPE = "dietType"
+        const val PREFERENCES_DIET_TYPE_ID = "dietTypeId"
+        const val PREFERENCES_BACK_ONLINE = "backOnline"
+        const val PREFERENCES_NAME = "foody_preferences"
+
     }
 }

@@ -14,4 +14,10 @@
     <color name="balck_grey">#333333</color>
     <color name="red">#EE2020</color>
     <color name="green_transparant">#338BD2A3</color>
+
+    //chip color
+    <color name="checkedChipBackgroundColor">#568BD2A3</color>
+    <color name="chipBackgroundColor">#E4DEDE</color>
+    <color name="checkedChipTextColor">@color/green_secondary</color>
+    <color name="chipTextColor">@color/black</color>
 </resources>

@@ -9,7 +9,11 @@
         android:id="@+id/navigation_recipes"
         android:name="com.uzlahpri.recipedia.ui.recipes.RecipesFragment"
         android:label="@string/Recipes"
-        tools:layout="@layout/fragment_recipes" />
+        tools:layout="@layout/fragment_recipes">
+        <action
+            android:id="@+id/action_navigation_recipes_to_reciipesBottomSheet"
+            app:destination="@id/reciipesBottomSheet" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_favorites"
@@ -28,4 +32,14 @@
         android:name="com.uzlahpri.recipedia.ui.ProfileFragment"
         android:label="Profile"
         tools:layout="@layout/fragment_profile" />
+
+    <dialog
+        android:id="@+id/reciipesBottomSheet"
+        android:name="com.uzlahpri.recipedia.ui.recipes.bottomsheet.ReciipesBottomSheet"
+        android:label="recipes_bottom_sheet"
+        tools:layout="@layout/recipes_bottom_sheet">
+        <action
+            android:id="@+id/action_reciipesBottomSheet_to_navigation_recipes"
+            app:destination="@id/navigation_recipes" />
+    </dialog>
 </navigation>
