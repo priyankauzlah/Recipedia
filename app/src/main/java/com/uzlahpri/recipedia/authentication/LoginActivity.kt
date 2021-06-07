@@ -41,6 +41,14 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         loginBinding.tvLoginCreate.setOnClickListener(this)
     }
 
+        override fun onStart() {
+        super.onStart()
+        val user = FirebaseAuth.getInstance().currentUser
+        if (user != null) {
+            startActivity(MainActivity.getLaunchService(this))
+        }
+    }
+
     override fun onClick(p0: View) {
         when (p0.id) {
             R.id.tv_login_forgot -> startActivity(Intent(ResetActivity.getLaunchService(this)))

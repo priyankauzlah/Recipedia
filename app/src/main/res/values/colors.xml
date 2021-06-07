@@ -20,4 +20,6 @@
     <color name="chipBackgroundColor">#E4DEDE</color>
     <color name="checkedChipTextColor">@color/green_secondary</color>
     <color name="chipTextColor">@color/black</color>
+
+    <color name="actionBarBackgroundColor">@color/green_primary</color>
 </resources>

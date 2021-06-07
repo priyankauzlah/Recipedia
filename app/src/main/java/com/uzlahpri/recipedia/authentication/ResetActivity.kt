@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.uzlahpri.recipedia.R
+import com.uzlahpri.recipedia.databinding.ActivityLoginBinding
 import com.uzlahpri.recipedia.databinding.ActivityResetBinding
 
 class ResetActivity : AppCompatActivity(), View.OnClickListener {
@@ -19,14 +20,16 @@ class ResetActivity : AppCompatActivity(), View.OnClickListener {
     companion object {
         fun getLaunchService(from: Context) = Intent(from, ResetActivity::class.java).apply {
             addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
-
         }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        resetBinding = ActivityResetBinding.inflate(layoutInflater)
+
         setContentView(resetBinding.root)
         supportActionBar?.hide()
+
         mAuth = FirebaseAuth.getInstance()
         resetBinding.btnSend.setOnClickListener(this)
         resetBinding.ibBackReset.setOnClickListener(this)
