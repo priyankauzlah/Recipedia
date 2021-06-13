@@ -10,23 +10,25 @@ import androidx.databinding.BindingAdapter
 import androidx.navigation.findNavController
 import coil.load
 import com.uzlahpri.recipedia.R
-import com.uzlahpri.recipedia.models.Result
-import com.uzlahpri.recipedia.ui.recipes.RecipesFragmentDirections
+import com.uzlahpri.recipedia.RecipesFragmentDirections
+import com.uzlahpri.recipedia.models.ResultRecipe
+import org.jsoup.Jsoup
 import java.lang.Exception
 
 class RecipesRowBinding {
+
     companion object {
 
         @BindingAdapter("onRecipeClickListener")
         @JvmStatic
-        fun onRecipeClickListener(recipeRowLayout: ConstraintLayout, result: Result){
+        fun onRecipeClickListener(recipeRowLayout: ConstraintLayout, resultRecipe: ResultRecipe) {
             Log.d("onRecipeClickListener", "CALLED")
-            recipeRowLayout.setOnClickListener{
+            recipeRowLayout.setOnClickListener {
                 try {
                     val action =
-                        RecipesFragmentDirections.actionNavigationRecipesToDetailsActivity(result)
+                        RecipesFragmentDirections.actionRecipesFragmentToDetailsActivity(resultRecipe)
                     recipeRowLayout.findNavController().navigate(action)
-                }catch (e: Exception){
+                } catch (e: Exception) {
                     Log.d("onRecipeClickListener", e.toString())
                 }
             }
@@ -41,36 +43,31 @@ class RecipesRowBinding {
             }
         }
 
-        //untuk biar muncul berapa orang yg nge like
         @BindingAdapter("setNumberOfLikes")
         @JvmStatic
         fun setNumberOfLikes(textView: TextView, likes: Int) {
             textView.text = likes.toString()
         }
 
-        // biar muncul yang likesnya jadi text
         @BindingAdapter("setNumberOfMinutes")
         @JvmStatic
         fun setNumberOfMinutes(textView: TextView, minutes: Int) {
             textView.text = minutes.toString()
         }
 
-        //biar warna ijo pas vegan
         @BindingAdapter("applyVeganColor")
         @JvmStatic
         fun applyVeganColor(view: View, vegan: Boolean) {
             if (vegan) {
                 when (view) {
-                    //buat ngasi warna ijo pas dia vegan di text
                     is TextView -> {
                         view.setTextColor(
                             ContextCompat.getColor(
                                 view.context,
-                                R.color.green_secondary
+                                R.color.green_primary
                             )
                         )
                     }
-                    //buat ngasi warna ijo pas dia vegan di logonya
                     is ImageView -> {
                         view.setColorFilter(
                             ContextCompat.getColor(
@@ -82,5 +79,16 @@ class RecipesRowBinding {
                 }
             }
         }
+
+        @BindingAdapter("parseHtml")
+        @JvmStatic
+        fun parseHtml(textView: TextView, description: String?){
+            if(description != null) {
+                val desc = Jsoup.parse(description).text()
+                textView.text = desc
+            }
+        }
+
     }
+
 }

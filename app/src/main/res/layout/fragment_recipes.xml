@@ -13,64 +13,61 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/light_grey"
-        tools:context=".ui.recipes.RecipesFragment">
+        tools:context=".ui.fragments.recipes.RecipesFragment">
 
         <com.todkars.shimmer.ShimmerRecyclerView
             android:id="@+id/recyclerview"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginStart="@dimen/_16dp"
-            android:layout_marginEnd="@dimen/_16dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
             android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:shimmer_recycler_item_count="3"
             app:shimmer_recycler_layout="@layout/placeholder_row_layout"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/recipes_fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="24dp"
-            android:layout_marginBottom="70dp"
+            android:layout_marginBottom="24dp"
             android:clickable="true"
-            android:focusable="true"
+            app:tint="@color/white"
             android:src="@drawable/ic_restaurant"
-            app:backgroundTint="@color/green_primary"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:tint="@color/white" />
+            android:focusable="true" />
 
         <ImageView
             android:id="@+id/error_imageView"
-            android:layout_width="@dimen/_100dp"
-            android:layout_height="@dimen/_100dp"
-            android:alpha="0.5"
             readApiResponse="@{mainViewModel.recipesResponse}"
-            readDataBase="@{mainViewModel.readRecipes}"
+            readDatabase="@{mainViewModel.readRecipes}"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:alpha="0.5"
             android:src="@drawable/ic_error"
             android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.44" />
+            app:layout_constraintTop_toTopOf="@+id/recyclerview"
+            app:layout_constraintVertical_bias="0.37" />
 
         <TextView
             android:id="@+id/error_textView"
+            readApiResponse2="@{mainViewModel.recipesResponse}"
+            readDatabase2="@{mainViewModel.readRecipes}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:alpha="0.5"
-            readApiResponse2="@{mainViewModel.recipesResponse}"
-            readDataBase2="@{mainViewModel.readRecipes}"
-            android:fontFamily="@font/poppins_semibold"
-            android:text="@string/no_internet_connection"
-            android:textSize="@dimen/_20sp"
+            android:textSize="18sp"
+            android:textStyle="bold"
             android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="@+id/error_imageView"
             app:layout_constraintStart_toStartOf="@+id/error_imageView"

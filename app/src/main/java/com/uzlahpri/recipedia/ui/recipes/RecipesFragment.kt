@@ -10,6 +10,7 @@ import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -40,7 +41,6 @@ class RecipesFragment : Fragment(), SearchView.OnQueryTextListener {
     private val mAdapter by lazy { RecipesAdapter() }
 
     private lateinit var networkListener: NetworkListener
-    private lateinit var recipeFragmentBinding: FragmentRecipesBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,17 +50,16 @@ class RecipesFragment : Fragment(), SearchView.OnQueryTextListener {
 
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
+        inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
+    ): View? {
         // Inflate the layout for this fragment
         _binding = FragmentRecipesBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
         binding.mainViewModel = mainViewModel
-//        recipeFragmentBinding = FragmentRecipesBinding.inflate(layoutInflater)
 
         setHasOptionsMenu(true)
+
         setupRecyclerView()
 
         recipesViewModel.readBackOnline.observe(viewLifecycleOwner, {
@@ -80,12 +79,12 @@ class RecipesFragment : Fragment(), SearchView.OnQueryTextListener {
 
         binding.recipesFab.setOnClickListener {
             if (recipesViewModel.networkStatus) {
-                findNavController().navigate(R.id.action_navigation_recipes_to_reciipesBottomSheet)
+                findNavController().navigate(R.id.action_recipesFragment_to_recipesBottomSheet)
             } else {
                 recipesViewModel.showNetworkStatus()
             }
         }
-//        return recipeFragmentBinding.root
+
         return binding.root
     }
 
@@ -105,7 +104,7 @@ class RecipesFragment : Fragment(), SearchView.OnQueryTextListener {
     }
 
     override fun onQueryTextSubmit(query: String?): Boolean {
-        if (query != null) {
+        if(query != null) {
             searchApiData(query)
         }
         return true
@@ -115,7 +114,6 @@ class RecipesFragment : Fragment(), SearchView.OnQueryTextListener {
         return true
     }
 
-    //video ke 47
     private fun readDatabase() {
         lifecycleScope.launch {
             mainViewModel.readRecipes.observeOnce(viewLifecycleOwner, { database ->
@@ -150,13 +148,11 @@ class RecipesFragment : Fragment(), SearchView.OnQueryTextListener {
                 }
                 is NetworkResult.Loading -> {
                     showShimmerEffect()
-
                 }
             }
         })
     }
 
-    // video 66-70
     private fun searchApiData(searchQuery: String) {
         showShimmerEffect()
         mainViewModel.searchRecipes(recipesViewModel.applySearchQuery(searchQuery))
@@ -183,7 +179,6 @@ class RecipesFragment : Fragment(), SearchView.OnQueryTextListener {
         })
     }
 
-    //video ke 47
     private fun loadDataFromCache() {
         lifecycleScope.launch {
             mainViewModel.readRecipes.observe(viewLifecycleOwner, { database ->
@@ -194,23 +189,17 @@ class RecipesFragment : Fragment(), SearchView.OnQueryTextListener {
         }
     }
 
-    //munculin shimmer tapi mViewnya diganti recipeFragmentBinding
     private fun showShimmerEffect() {
         binding.recyclerview.showShimmer()
     }
 
-    //hide shimmer tapi mViewnya diganti recipeFragmentBinding
     private fun hideShimmerEffect() {
         binding.recyclerview.hideShimmer()
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        binding.recyclerview.showShimmer()
     }
 
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
     }
+
 }

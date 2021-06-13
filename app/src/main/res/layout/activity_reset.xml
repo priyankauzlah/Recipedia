@@ -41,7 +41,7 @@
         android:layout_marginEnd="@dimen/_322dp"
         android:fontFamily="@font/poppins_semibold"
         android:text="@string/email"
-        android:textColor="@color/balck_grey"
+        android:textColor="@color/black"
         android:textSize="@dimen/_20sp"
         app:layout_constraintEnd_toEndOf="@+id/et_reset_email"
         app:layout_constraintHorizontal_bias="0.0"

@@ -7,13 +7,17 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-
+    <color name="yellow">#FFC114</color>
+    <color name="lightMediumGray">#80D1D1D1</color>
     <color name="light_grey">#F3F3F3</color>
     <color name="green_primary">#8BD2A3</color>
     <color name="green_secondary">#4CAF50</color>
     <color name="balck_grey">#333333</color>
     <color name="red">#EE2020</color>
     <color name="green_transparant">#338BD2A3</color>
+    <color name="dark">#313C44</color>
+    <color name="darker">#151B20</color>
+
 
     //chip color
     <color name="checkedChipBackgroundColor">#568BD2A3</color>
@@ -22,4 +26,10 @@
     <color name="chipTextColor">@color/black</color>
 
     <color name="actionBarBackgroundColor">@color/green_primary</color>
+    <color name="strokeColor">@color/lightMediumGray</color>
+    <color name="cardBackgroundColor">@color/white</color>
+    <color name="cardBackgroundLightColor">#106200EA</color>
+    <color name="statusBarColor">@color/green_primary</color>
+    <color name="contextualStatusBarColor">@color/darker</color>
+    <color name="contextualActionBarColor">@color/dark</color>
 </resources>

@@ -25,21 +25,22 @@ import javax.inject.Inject
 
 
 @ActivityRetainedScoped
+//Mengidentifikasi konstruktor, metode, dan bidang yang dapat disuntikkan.
 class DataStoreRepository @Inject constructor(@ApplicationContext private val context: Context) {
-    private object PreferencesKeys {
+
+
+    private object PreferenceKeys {
         val selectedMealType = preferencesKey<String>(PREFERENCES_MEAL_TYPE)
         val selectedMealTypeId = preferencesKey<Int>(PREFERENCES_MEAL_TYPE_ID)
         val selectedDietType = preferencesKey<String>(PREFERENCES_DIET_TYPE)
         val selectedDietTypeId = preferencesKey<Int>(PREFERENCES_DIET_TYPE_ID)
-
         val backOnline = preferencesKey<Boolean>(PREFERENCES_BACK_ONLINE)
     }
 
-    private val dataStore: DataStore<Preferences> = context.createDataStore(
+    private val dataStore: DataStore<androidx.datastore.preferences.core.Preferences> = context.createDataStore(
         name = PREFERENCES_NAME
     )
 
-    //suspend fun - video no 57
     suspend fun saveMealAndDietType(
         mealType: String,
         mealTypeId: Int,
@@ -47,41 +48,20 @@ class DataStoreRepository @Inject constructor(@ApplicationContext private val co
         dietTypeId: Int
     ) {
         dataStore.edit { preferences ->
-            preferences[PreferencesKeys.selectedMealType] = mealType
-            preferences[PreferencesKeys.selectedMealTypeId] = mealTypeId
-            preferences[PreferencesKeys.selectedDietType] = dietType
-            preferences[PreferencesKeys.selectedDietTypeId] = dietTypeId
+            preferences[PreferenceKeys.selectedMealType] = mealType
+            preferences[PreferenceKeys.selectedMealTypeId] = mealTypeId
+            preferences[PreferenceKeys.selectedDietType] = dietType
+            preferences[PreferenceKeys.selectedDietTypeId] = dietTypeId
         }
     }
 
     suspend fun saveBackOnline(backOnline: Boolean) {
         dataStore.edit { preferences ->
-            preferences[PreferencesKeys.backOnline] = backOnline
+            preferences[PreferenceKeys.backOnline] = backOnline
         }
     }
 
-    val readMealAndDietType: kotlinx.coroutines.flow.Flow<MealAndDietType> = dataStore.data
-        .catch { exception ->
-            if (exception is IOException) {
-                emit(emptyPreferences())
-            } else {
-                throw exception
-            }
-        }
-        .map { prefereces ->
-            val selectedMealType = prefereces[PreferencesKeys.selectedMealType] ?: DEFAULT_MEAL_TYPE
-            val selectedMealTypeId = prefereces[PreferencesKeys.selectedMealTypeId] ?: 0
-            val selectedDietType = prefereces[PreferencesKeys.selectedDietType] ?: DEFAULT_DIET_TYPE
-            val selectedDietTypeId = prefereces[PreferencesKeys.selectedDietTypeId] ?: 0
-            MealAndDietType(
-                selectedMealType,
-                selectedMealTypeId,
-                selectedDietType,
-                selectedDietTypeId
-            )
-        }
-
-    val readBackOnline: Flow<Boolean> = dataStore.data
+    val readMealAndDietType: Flow<MealAndDietType> = dataStore.data
         .catch { exception ->
             if (exception is IOException) {
                 emit(emptyPreferences())
@@ -90,9 +70,31 @@ class DataStoreRepository @Inject constructor(@ApplicationContext private val co
             }
         }
         .map { preferences ->
-            val backOnline = preferences[PreferencesKeys.backOnline] ?: false
+            val selectedMealType = preferences[PreferenceKeys.selectedMealType] ?: DEFAULT_MEAL_TYPE
+            val selectedMealTypeId = preferences[PreferenceKeys.selectedMealTypeId] ?: 0
+            val selectedDietType = preferences[PreferenceKeys.selectedDietType] ?: DEFAULT_DIET_TYPE
+            val selectedDietTypeId = preferences[PreferenceKeys.selectedDietTypeId] ?: 0
+            MealAndDietType(
+                selectedMealType,
+                selectedMealTypeId,
+                selectedDietType,
+                selectedDietTypeId
+            )
+        }
+
+    val readBackOnline: kotlinx.coroutines.flow.Flow<Boolean> = dataStore.data
+        .catch { exception ->
+            if (exception is IOException) {
+                emit(emptyPreferences())
+            } else {
+                throw exception
+            }
+        }
+        .map {preferences ->
+            val backOnline = preferences[PreferenceKeys.backOnline] ?: false
             backOnline
         }
+
 }
 
 data class MealAndDietType(
@@ -100,5 +102,4 @@ data class MealAndDietType(
     val selectedMealTypeId: Int,
     val selectedDietType: String,
     val selectedDietTypeId: Int
-
 )

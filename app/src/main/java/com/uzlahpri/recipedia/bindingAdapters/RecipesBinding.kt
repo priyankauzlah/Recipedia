@@ -4,15 +4,17 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
-import com.uzlahpri.recipedia.data.database.RecipesEntity
+import com.uzlahpri.recipedia.data.database.entities.RecipesEntity
 import com.uzlahpri.recipedia.models.FoodRecipe
 import com.uzlahpri.recipedia.util.NetworkResult
 
 class RecipesBinding {
+
     companion object {
-        @BindingAdapter("readApiResponse", "readDataBase", requireAll = true)
+
+        @BindingAdapter("readApiResponse", "readDatabase", requireAll = true)
         @JvmStatic
-        fun errorImageViewVisisbility(
+        fun errorImageViewVisibility(
             imageView: ImageView,
             apiResponse: NetworkResult<FoodRecipe>?,
             database: List<RecipesEntity>?
@@ -26,7 +28,7 @@ class RecipesBinding {
             }
         }
 
-        @BindingAdapter("readApiResponse2", "readDataBase2", requireAll = true)
+        @BindingAdapter("readApiResponse2", "readDatabase2", requireAll = true)
         @JvmStatic
         fun errorTextViewVisibility(
             textView: TextView,
@@ -44,4 +46,5 @@ class RecipesBinding {
         }
 
     }
+
 }

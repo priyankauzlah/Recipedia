@@ -7,7 +7,7 @@
 
         <variable
             name="result"
-            type="com.uzlahpri.recipedia.models.Result" />
+            type="com.uzlahpri.recipedia.models.ResultRecipe" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

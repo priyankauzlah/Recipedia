@@ -6,8 +6,9 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class ExtendedIngredient(
+    //tadinya di amount Int trs aku ganti jadi Double
     @SerializedName("amount")
-    val amount: Int,
+    val amount: Double,
     @SerializedName("consistency")
     val consistency: String,
     @SerializedName("image")
