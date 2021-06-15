@@ -13,14 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Recipedia">
-        <activity android:name=".SplashActivity"></activity>
-        <activity
-            android:name=".ui.DetailsActivity"
-            android:label="Details"
-            android:theme="@style/DetailsActivityStyle" />
-        <activity android:name=".authentication.ResetActivity" />
-        <activity android:name=".authentication.CreateActivity" />
-        <activity android:name=".authentication.LoginActivity">
+        <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,8 +21,18 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".ui.DetailsActivity"
+            android:label="Details"
+            android:theme="@style/DetailsActivityStyle" />
+        <activity android:name=".authentication.ResetActivity" />
+        <activity android:name=".authentication.CreateActivity" />
+        <activity android:name=".authentication.LoginActivity" />
+
+        <activity
             android:name=".ui.MainActivity"
-            android:label="@string/app_name"></activity>
+            android:label="@string/app_name">
+
+        </activity>
     </application>
 
 </manifest>

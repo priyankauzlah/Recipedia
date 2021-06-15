@@ -74,4 +74,5 @@
     <string name="delete_favorite_menu">Delete Favorite Menu</string>
     <string name="no_favorite_recipes">No Favorite Recipes</string>
     <string name="lorem_ipsum">Lorem Ipsum</string>
+    <string name="image_view">Image View</string>
 </resources>
