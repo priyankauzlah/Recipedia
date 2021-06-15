@@ -11,7 +11,6 @@ import kotlinx.coroutines.flow.MutableStateFlow
 
 @ExperimentalCoroutinesApi
 class NetworkListener : ConnectivityManager.NetworkCallback() {
-
     private val isNetworkAvailable = MutableStateFlow(false)
 
     @RequiresApi(Build.VERSION_CODES.N)

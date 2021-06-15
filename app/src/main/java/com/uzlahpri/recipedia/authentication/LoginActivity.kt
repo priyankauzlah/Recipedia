@@ -26,16 +26,11 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //add
         loginBinding = ActivityLoginBinding.inflate(layoutInflater)
-
-        //ubah
         setContentView(loginBinding.root)
         supportActionBar?.hide()
-
         firebaseAuth = FirebaseAuth.getInstance()
 
-        //login binding dulu
         loginBinding.btnLogin.setOnClickListener(this)
         loginBinding.tvLoginForgot.setOnClickListener(this)
         loginBinding.tvLoginCreate.setOnClickListener(this)

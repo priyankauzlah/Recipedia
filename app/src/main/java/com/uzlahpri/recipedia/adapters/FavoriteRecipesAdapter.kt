@@ -19,7 +19,6 @@ class FavoriteRecipesAdapter (
     private val requireActivity: FragmentActivity,
     private val mainViewModel: MainViewModel
 ) : RecyclerView.Adapter<FavoriteRecipesAdapter.MyViewHolder>(), ActionMode.Callback {
-    //pada deklarasi kelas ini  Adapter bertanggung jawab memanggil konstruktor superclassnya,Recyclerview
     private var multiSelection = false
 
     private lateinit var mActionMode: ActionMode
@@ -46,21 +45,15 @@ class FavoriteRecipesAdapter (
         }
 
     }
-    // membuat suatu tampilan dan mengembalikannya
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         return MyViewHolder.from(parent)
     }
-    //menghubungkan data dengan view holder pada posisi yang ditentukan dalam RecyclerView.
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         myViewHolders.add(holder)
         rootView = holder.itemView.rootView
 
         val currentRecipe = favoriteRecipes[position]
         holder.bind(currentRecipe)
-
-        /**
-         * Single Click Listener
-         * */
         holder.itemView.favoriteRecipesRowLayout.setOnClickListener {
             if (multiSelection) {
                 applySelection(holder, currentRecipe)
@@ -72,10 +65,6 @@ class FavoriteRecipesAdapter (
                 holder.itemView.findNavController().navigate(action)
             }
         }
-
-        /**
-         * Long Click Listener
-         * */
         holder.itemView.favoriteRecipesRowLayout.setOnLongClickListener {
             if (!multiSelection) {
                 multiSelection = true
@@ -124,7 +113,6 @@ class FavoriteRecipesAdapter (
             }
         }
     }
-    // mengembalikan jumlah total item dalam kumpulan data yang dipegang oleh adapter
     override fun getItemCount(): Int {
         return favoriteRecipes.size
     }
@@ -169,7 +157,6 @@ class FavoriteRecipesAdapter (
     }
 
     fun setData(newFavoriteRecipes: List<FavoritesEntity>) {
-        //DiffUtil mempunyai Callback yang didalam nya terdapat beberapa fungsi yang mengembalikan boolean
         val favoriteRecipesDiffUtil =
             RecipesDiffUtil(favoriteRecipes, newFavoriteRecipes)
         val diffUtilResult = DiffUtil.calculateDiff(favoriteRecipesDiffUtil)

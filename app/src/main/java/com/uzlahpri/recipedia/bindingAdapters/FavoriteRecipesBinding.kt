@@ -10,11 +10,8 @@ import com.uzlahpri.recipedia.data.database.entities.FavoritesEntity
 
 class FavoriteRecipesBinding {
     companion object {
-        //BindingAdapter diterapkan ke metode yang digunakan untuk memanipulasi bagaimana nilai
-        // dengan ekspresi diatur ke tampilan.
         @BindingAdapter("viewVisibility", "setData", requireAll = false)
         @JvmStatic
-        //Untuk membuat fungsi objek atau properti di Kotlin menjadi kelas statis Java yang dihasilkan
         fun setDataAndViewVisibility(
             view: View,
             favoritesEntity: List<FavoritesEntity>?,
@@ -47,6 +44,5 @@ class FavoriteRecipesBinding {
                 }
             }
         }
-
     }
 }

@@ -9,7 +9,6 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface RecipesDao {
-
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertRecipes(recipesEntity: RecipesEntity)
 
@@ -33,5 +32,4 @@ interface RecipesDao {
 
     @Query("DELETE FROM favorite_recipes_table")
     suspend fun deleteAllFavoriteRecipes()
-
 }

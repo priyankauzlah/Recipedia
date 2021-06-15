@@ -16,9 +16,7 @@ class InstructionsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_instructions, container, false)
-
         val args = arguments
         val myBundle: ResultRecipe? = args?.getParcelable(Constants.RECIPE_RESULT_KEY)
 

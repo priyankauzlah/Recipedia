@@ -11,7 +11,6 @@ import com.uzlahpri.recipedia.util.NetworkResult
 class RecipesBinding {
 
     companion object {
-
         @BindingAdapter("readApiResponse", "readDatabase", requireAll = true)
         @JvmStatic
         fun errorImageViewVisibility(

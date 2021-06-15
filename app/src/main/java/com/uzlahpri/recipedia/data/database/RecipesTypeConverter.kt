@@ -7,9 +7,7 @@ import com.uzlahpri.recipedia.models.FoodRecipe
 import com.uzlahpri.recipedia.models.ResultRecipe
 
 class RecipesTypeConverter {
-
     var gson = Gson()
-    //untuk mempertahankan tipe costum tertentu kedalam data base
     @TypeConverter
     fun foodRecipeToString(foodRecipe: FoodRecipe): String {
         return gson.toJson(foodRecipe)
@@ -31,5 +29,4 @@ class RecipesTypeConverter {
         val listType = object : TypeToken<ResultRecipe>() {}.type
         return gson.fromJson(data, listType)
     }
-
 }

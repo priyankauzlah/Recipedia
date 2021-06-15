@@ -27,7 +27,6 @@ class DetailsActivity : AppCompatActivity() {
 
     private val args by navArgs<DetailsActivityArgs>()
     private val mainViewModel: MainViewModel by viewModels()
-
     private var recipeSaved = false
     private var savedRecipeId = 0
 

@@ -22,10 +22,7 @@ class MainViewModel @ViewModelInject constructor(
     private val repository: Repository,
     application: Application
 ) : AndroidViewModel(application) {
-
-
-    /** ROOM DATABASE */
-
+    //Room database
     val readRecipes: LiveData<List<RecipesEntity>> = repository.local.readRecipes().asLiveData()
     val readFavoriteRecipes: LiveData<List<FavoritesEntity>> = repository.local.readFavoriteRecipes().asLiveData()
     val readFoodJoke: LiveData<List<FoodJokeEntity>> = repository.local.readFoodJoke().asLiveData()
@@ -55,7 +52,7 @@ class MainViewModel @ViewModelInject constructor(
             repository.local.deleteAllFavoriteRecipes()
         }
 
-    /** RETROFIT */
+    // retrofit
     var recipesResponse: MutableLiveData<NetworkResult<FoodRecipe>> = MutableLiveData()
     var searchedRecipesResponse: MutableLiveData<NetworkResult<FoodRecipe>> = MutableLiveData()
     var foodJokeResponse: MutableLiveData<NetworkResult<FoodJoke>> = MutableLiveData()

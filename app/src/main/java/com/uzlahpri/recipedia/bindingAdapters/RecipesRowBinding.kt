@@ -18,7 +18,6 @@ import java.lang.Exception
 class RecipesRowBinding {
 
     companion object {
-
         @BindingAdapter("onRecipeClickListener")
         @JvmStatic
         fun onRecipeClickListener(recipeRowLayout: ConstraintLayout, resultRecipe: ResultRecipe) {

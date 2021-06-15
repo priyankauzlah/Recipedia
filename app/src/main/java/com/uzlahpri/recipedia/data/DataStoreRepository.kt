@@ -23,11 +23,8 @@ import kotlinx.coroutines.flow.map
 import java.io.IOException
 import javax.inject.Inject
 
-
 @ActivityRetainedScoped
-//Mengidentifikasi konstruktor, metode, dan bidang yang dapat disuntikkan.
 class DataStoreRepository @Inject constructor(@ApplicationContext private val context: Context) {
-
 
     private object PreferenceKeys {
         val selectedMealType = preferencesKey<String>(PREFERENCES_MEAL_TYPE)
